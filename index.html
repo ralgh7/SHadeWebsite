@@ -3,240 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shade | Professional Utility Software</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Shade | Unity Editor Utility Client</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #c9d1d9;
+            --text-highlight: #ffffff;
+            --accent: #9d4edd;
+            --accent-hover: #c77dff;
+            --border-color: #30363d;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header / Nav */
-        header {
-            background-color: var(--surface-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 20px 0;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            font-size: 1.25rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background-color: var(--surface-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--text-main);
-        }
-
-        .hero p {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-        }
-
-        /* Grid Layout for Content */
-        .main-content {
+            width: 100%;
+            max-width: 900px;
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-            padding: 60px 0;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
         }
 
         @media (max-width: 768px) {
-            .main-content {
+            .container {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Cards & Typography */
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         .card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            padding: 25px;
             border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        h1, h2 {
+            margin-top: 0;
+            color: var(--text-highlight);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
         }
 
         h2 {
-            font-size: 1.5rem;
-            margin-top: 0;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        li::before {
+            content: '•';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .price-card {
+            text-align: center;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-highlight);
+            margin-bottom: 5px;
+        }
+
+        .license-type {
+            color: #8b949e;
             margin-bottom: 20px;
         }
 
-        .policy-text {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        /* Pricing Specifics */
-        .pricing-card {
-            text-align: center;
-            background: var(--surface-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .price-tag {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin: 20px 0;
-        }
-
-        .price-tag span {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-
         .buy-button {
-            display: inline-block;
-            width: 100%;
-            padding: 12px 20px;
-            background-color: var(--primary-color);
+            background-color: var(--accent);
             color: white;
-            text-decoration: none;
-            border-radius: 6px;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
             font-weight: 600;
+            cursor: pointer;
+            width: 100%;
             transition: background-color 0.2s;
-            box-sizing: border-box;
-            margin-top: 10px;
+            font-size: 1rem;
         }
 
         .buy-button:hover {
-            background-color: var(--primary-hover);
+            background-color: var(--accent-hover);
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--surface-color);
-            border-top: 1px solid var(--border-color);
-            padding: 40px 0;
-            margin-top: 40px;
-            color: var(--text-muted);
+        .policy-section {
             font-size: 0.9rem;
-            text-align: center;
+            color: #8b949e;
         }
 
-        footer a {
-            color: var(--primary-color);
+        .contact-info {
+            text-align: right;
+            padding-top: 20px;
+        }
+
+        .contact-info a {
+            color: var(--accent);
             text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-grid {
-            display: flex;
-            justify-content: space-around;
-            max-width: 800px;
-            margin: 0 auto 20px auto;
-            text-align: left;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container nav-content">
-            <div>Shade</div>
-            <div><a href="mailto:support@example.com" style="color: var(--primary-color); text-decoration: none; font-size: 1rem;">Support</a></div>
+<div class="container">
+    <div class="left-column">
+        <div class="card product-card">
+            <h1>Shade</h1>
+            <p>Shade is a professional utility client for the unity editor designed specifically to help optimize and improve your workflow and development experience.</p>
+            <p>Upon purchasing you will receive a licence key, along with the downloadable software files.</p>
+            <ul>
+                <li>Consistent updates across editor versions</li>
+                <li>Sleek user interface with immense customization</li>
+                <li>20+ modules and adjustments to change to your liking</li>
+                <li>Regular bug fixes and security changes</li>
+            </ul>
         </div>
-    </header>
-
-    <div class="hero">
-        <div class="container">
-            <h1>Advanced Software Utilities</h1>
-            <p>A powerful, feature-rich utility application designed for seamless performance. Built for professionals who need secure authentication, streamlined execution, and a highly intuitive user interface.</p>
-        </div>
-    </div>
-
-    <div class="container main-content">
-        <div class="details-section">
-            <div class="card">
-                <h2>Product Description</h2>
-                <p>Shade is a premium utility tool developed to optimize your digital workflow. Upon purchase, you will receive an exclusive license key alongside the downloadable software package.</p>
-                <ul>
-                    <li>Secure, custom authentication system</li>
-                    <li>Highly optimized runtime execution</li>
-                    <li>Clean, responsive interface</li>
-                    <li>Regular security and feature updates</li>
-                </ul>
-            </div>
-
-            <div class="card policy-text">
-                <h2>Refund Policy</h2>
-                <p><strong>All sales are final.</strong> Due to the digital nature of this software and the immediate, irrevocable delivery of authentication keys upon purchase, we cannot offer refunds once the software has been downloaded or the key has been accessed. Please ensure the product meets your requirements before purchasing.</p>
-            </div>
-
-            <div class="card policy-text">
-                <h2>Disclaimer</h2>
-                <p>This software is provided "as is" without warranty of any kind, express or implied. Connor Herring and the development team are not responsible for any system modifications, account actions, or damages resulting from the use of this tool. By purchasing, you agree to use this software entirely at your own risk.</p>
-            </div>
+        
+        <div class="card policy-section">
+            <h2>Refund Policy</h2>
+            <p>All sales are final. Since we provide digital goods, we do not issue refunds once the order is confirmed and the product is sent. We recommend contacting us for assistance if you experience any issues receiving or downloading our products.</p>
         </div>
 
-        <div class="purchase-section">
-            <div class="card pricing-card">
-                <h2>Lifetime License</h2>
-                <div class="price-tag">$25.00 <span>USD</span></div>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Includes the core application, an authentication key, and all future updates.</p>
-                <a href="mailto:support@example.com" class="buy-button">Contact to Purchase</a>
-            </div>
+        <div class="card policy-section">
+            <h2>Disclaimer</h2>
+            <p>This software is provided "as is", without warranty of any kind, express or implied. The author shall not be liable for any claims, damages or other liability arising from the use of this software.</p>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <strong>Contact</strong><br>
-                    support@example.com
-                </div>
-                <div>
-                    <strong>Legal</strong><br>
-                    <a href="#">Terms of Service</a><br>
-                    <a href="#">Privacy Policy</a>
-                </div>
-            </div>
-            <p>&copy; 2026 Connor Herring. All rights reserved.</p>
+    <div class="right-column">
+        <div class="card price-card">
+            <div class="price">$25.00</div>
+            <div class="license-type">Lifetime License</div>
+            <button class="buy-button">Purchase License</button>
+            <p style="font-size: 0.8rem; color: #8b949e; margin-top: 15px;">Secure payment via Stripe</p>
         </div>
-    </footer>
+        <div class="contact-info">
+            For inquiries, please contact:<br>
+            <a href="mailto:support@shade.dev">support@shade.dev</a>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
