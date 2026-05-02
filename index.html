@@ -3,79 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shade | Utility Software</title>
+    <title>Shade | Professional Utility Software</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            background-color: #121212; 
-            color: #e0e0e0; 
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
         }
-        h1 { 
-            color: #ffffff; 
-            border-bottom: 2px solid #333; 
-            padding-bottom: 10px; 
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
         }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Nav */
+        header {
+            background-color: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* Grid Layout for Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 60px 0;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cards & Typography */
+        .card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
         h2 {
-            color: #ffffff;
+            font-size: 1.5rem;
             margin-top: 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
-        .price { 
-            font-size: 1.8em; 
-            color: #4CAF50; 
-            font-weight: bold; 
-            margin: 15px 0; 
+
+        .policy-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
         }
-        .section { 
-            margin-bottom: 25px; 
-            background: #1e1e1e; 
-            padding: 20px; 
-            border-radius: 8px; 
-            border: 1px solid #2a2a2a;
+
+        /* Pricing Specifics */
+        .pricing-card {
+            text-align: center;
+            background: var(--surface-color);
+            border: 2px solid var(--primary-color);
         }
-        a { 
-            color: #00bcd4; 
+
+        .price-tag {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 20px 0;
+        }
+
+        .price-tag span {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .buy-button {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+
+        .buy-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--primary-color);
             text-decoration: none;
         }
-        a:hover {
+
+        footer a:hover {
             text-decoration: underline;
         }
-        .disclaimer {
-            font-size: 0.85em;
-            color: #888;
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            text-align: left;
         }
     </style>
 </head>
 <body>
-    <h1>Shade</h1>
 
-    <div class="section">
-        <h2>Product Description</h2>
-        <p>A powerful, feature-rich utility application designed for seamless performance and advanced functionality. Features secure authentication, streamlined execution, and an intuitive user interface.</p>
+    <header>
+        <div class="container nav-content">
+            <div>Shade</div>
+            <div><a href="mailto:support@example.com" style="color: var(--primary-color); text-decoration: none; font-size: 1rem;">Support</a></div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Advanced Software Utilities</h1>
+            <p>A powerful, feature-rich utility application designed for seamless performance. Built for professionals who need secure authentication, streamlined execution, and a highly intuitive user interface.</p>
+        </div>
     </div>
 
-    <div class="section">
-        <h2>Pricing</h2>
-        <p class="price">$25.00</p>
-        <p><em>Lifetime access including future updates.</em></p>
+    <div class="container main-content">
+        <div class="details-section">
+            <div class="card">
+                <h2>Product Description</h2>
+                <p>Shade is a premium utility tool developed to optimize your digital workflow. Upon purchase, you will receive an exclusive license key alongside the downloadable software package.</p>
+                <ul>
+                    <li>Secure, custom authentication system</li>
+                    <li>Highly optimized runtime execution</li>
+                    <li>Clean, responsive interface</li>
+                    <li>Regular security and feature updates</li>
+                </ul>
+            </div>
+
+            <div class="card policy-text">
+                <h2>Refund Policy</h2>
+                <p><strong>All sales are final.</strong> Due to the digital nature of this software and the immediate, irrevocable delivery of authentication keys upon purchase, we cannot offer refunds once the software has been downloaded or the key has been accessed. Please ensure the product meets your requirements before purchasing.</p>
+            </div>
+
+            <div class="card policy-text">
+                <h2>Disclaimer</h2>
+                <p>This software is provided "as is" without warranty of any kind, express or implied. Connor Herring and the development team are not responsible for any system modifications, account actions, or damages resulting from the use of this tool. By purchasing, you agree to use this software entirely at your own risk.</p>
+            </div>
+        </div>
+
+        <div class="purchase-section">
+            <div class="card pricing-card">
+                <h2>Lifetime License</h2>
+                <div class="price-tag">$25.00 <span>USD</span></div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Includes the core application, an authentication key, and all future updates.</p>
+                <a href="mailto:support@example.com" class="buy-button">Contact to Purchase</a>
+            </div>
+        </div>
     </div>
 
-    <div class="section">
-        <h2>Contact</h2>
-        <p>To purchase or request support, please reach out via email:</p>
-        <p><strong><a href="mailto:your.email@example.com">your.email@example.com</a></strong></p>
-    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <strong>Contact</strong><br>
+                    support@example.com
+                </div>
+                <div>
+                    <strong>Legal</strong><br>
+                    <a href="#">Terms of Service</a><br>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <p>&copy; 2026 Connor Herring. All rights reserved.</p>
+        </div>
+    </footer>
 
-    <div class="section">
-        <h2>Refund Policy</h2>
-        <p>All sales are final. Due to the digital nature of this software and the delivery of authentication keys, refunds cannot be provided once the product has been accessed. Please review all features carefully before purchasing.</p>
-    </div>
-
-    <div class="section disclaimer">
-        <h2>Disclaimer</h2>
-        <p>This software is provided "as is" without warranty of any kind. The developer is not responsible for any account actions, system modifications, or damages resulting from the use of this tool. Use entirely at your own risk.</p>
-    </div>
 </body>
 </html>
